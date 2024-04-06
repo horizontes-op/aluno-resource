@@ -50,22 +50,16 @@ public class AlunoResource implements AlunoController {
         // insert using service
         aluno = alunoService.create(aluno);
         return ResponseEntity.ok(AlunoParser.to(aluno));
-        // return ResponseEntity.created(
-        //     ServletUriComponentsBuilder
-        //         .fromCurrentRequest()
-        //         .path("/{id}")
-        //         .buildAndExpand(aluno.id())
-        //         .toUri())
-        //     .body(AlunoParser.to(aluno)
-        //     );
     }
 
     @Override
     public ResponseEntity<AlunoOut> read(String id) {
-        final AlunoOut aluno = AlunoOut.builder()
-            .id(id)
-            .build();
-        return ResponseEntity.ok(aluno);
+        // read using service
+        Aluno aluno = alunoService.read(id);
+        if (aluno == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(AlunoParser.to(aluno));
     }
     
 }
