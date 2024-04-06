@@ -61,9 +61,9 @@ public class AlunoResource implements AlunoController {
     }
 
     @Override
-    public ResponseEntity<AlunoOut> read(String idUser) {
+    public ResponseEntity<AlunoOut> read(String id) {
         final AlunoOut aluno = AlunoOut.builder()
-            .id(idUser)
+            .id(id)
             .build();
         return ResponseEntity.ok(aluno);
     }
