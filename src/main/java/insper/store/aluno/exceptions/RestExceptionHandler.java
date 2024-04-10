@@ -7,6 +7,8 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import insper.store.aluno.CustomizedException.NotFoundException;
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         @ExceptionHandler(NullPointerException.class)
@@ -36,4 +38,11 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
             RestErrorMessage error = new RestErrorMessage(HttpStatus.SC_BAD_REQUEST, "Violação de integridade de dados: " + ex.getMessage());
             return ResponseEntity.status(HttpStatus.SC_BAD_REQUEST).body(error);
         }
+        @ExceptionHandler(NotFoundException.class)
+        private ResponseEntity<RestErrorMessage> handleResourceNotFoundException(NotFoundException ex) {
+            RestErrorMessage error = new RestErrorMessage(HttpStatus.SC_NOT_FOUND, "Recurso não encontrado: " + ex.getMessage());
+            return ResponseEntity.status(HttpStatus.SC_NOT_FOUND).body(error);
+        }
+    
+
 }

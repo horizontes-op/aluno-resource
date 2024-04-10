@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import insper.store.aluno.CustomizedException.NotFoundException;
+
 @RestController
 public class AlunoResource implements AlunoController {
 
@@ -58,7 +60,7 @@ public class AlunoResource implements AlunoController {
         // read using service
         Aluno aluno = alunoService.read(id);
         if (aluno == null) {
-            return ResponseEntity.notFound().build();
+            throw new NotFoundException("Aluno não encontrado");
         }
         return ResponseEntity.ok(AlunoParser.to(aluno));
     }
