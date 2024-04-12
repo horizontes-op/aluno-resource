@@ -18,7 +18,7 @@ pipeline {
                 }
             }
         }
-        stage('build image aluno') {
+        stage('push image aluno') {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credential') {
