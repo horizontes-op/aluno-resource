@@ -1,5 +1,5 @@
 
-CREATE TABLE  aluno
+CREATE TABLE if not exists  aluno.aluno
 (
     id_aluno VARCHAR(36) PRIMARY KEY,
     tx_nome VARCHAR(255) NOT NULL,
