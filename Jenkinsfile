@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('aluno interface') {
             steps {
-                build job: 'aluno', wait: true
+                build job: 'aluno-interface', wait: true
             }
         }
         stage('aluno') { 
