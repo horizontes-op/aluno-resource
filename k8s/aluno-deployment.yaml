@@ -17,7 +17,7 @@ spec:
       - name: aluno
         image: fernandowi55/aluno:latest
         ports:
-        - containerPort: 8081
+        - containerPort: 8080
 #         env:
 #         - name: eureka.client.service-url.defaultZone
 #           value: http://store-discovery:8761/eureka/
@@ -32,7 +32,7 @@ spec:
   ports:
     - protocol: TCP
       port: 8081
-      targetPort: 8081
+      targetPort: 8080
   type: LoadBalancer
 
    
