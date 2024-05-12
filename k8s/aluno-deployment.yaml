@@ -15,12 +15,12 @@ spec:
     spec:
       containers:
       - name: aluno
-        image: fernandowi55/store-aluno:latest
+        image: fernandowi55/aluno:latest
         ports:
         - containerPort: 8081
-        env:
-        - name: eureka.client.service-url.defaultZone
-          value: http://store-discovery:8761/eureka/
+#         env:
+#         - name: eureka.client.service-url.defaultZone
+#           value: http://store-discovery:8761/eureka/
 ---
 apiVersion: v1
 kind: Service
