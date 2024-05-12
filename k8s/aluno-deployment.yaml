@@ -29,6 +29,9 @@ metadata:
 spec:
   selector:
     app: aluno
+  ports:
+    - protocol: TCP
+      port: 8080
 
 
    
