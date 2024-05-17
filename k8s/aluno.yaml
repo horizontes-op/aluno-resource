@@ -18,9 +18,9 @@ spec:
         image: fernandowi55/aluno:latest
         ports:
         - containerPort: 8080
-#         env:
-#         - name: eureka.client.service-url.defaultZone
-#           value: http://store-discovery:8761/eureka/
+        env:
+        - name: eureka.client.service-url.defaultZone
+          value: http://10.100.65.157:8761/eureka/
 ---
 apiVersion: v1
 kind: Service
