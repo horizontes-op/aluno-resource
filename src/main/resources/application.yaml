@@ -2,15 +2,13 @@ spring:
   application:
     name: store-aluno
   datasource:
-    url: jdbc:postgresql://horizontes.c5w4osi0sl7q.us-east-2.rds.amazonaws.com:5432/horizontes # URL de conexão com o banco de dados PostgreSQL
-    username: postgres # Nome de usuário do banco de dados
-    password: tRD5jASTYt4Wq7 # Senha do banco de dados
-    driver-class-name: org.postgresql.Driver # Driver JDBC para PostgreSQL
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/store}
+    username: ${DATABASE_USERNAME:store}
+    password: ${DATABASE_PASSWORD:store}
+    driver-class-name: org.postgresql.Driver
   flyway:
     baseline-on-migrate: true
     schemas: aluno
-  ports:
-      - "8081:8081" 
   jpa:
     properties:
       hibernate:
@@ -29,7 +27,8 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: ${EUREKA_URI:http://10.100.110.190:8761/eureka/}
+      # defaultZone: ${EUREKA_URI:http://10.100.110.190:8761/eureka/}
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka/}
 
 springdoc:
   api-docs:
